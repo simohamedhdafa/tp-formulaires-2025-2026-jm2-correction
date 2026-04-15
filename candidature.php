@@ -66,6 +66,16 @@
 </head>
 <body>
     <div class="container">
+        <?php if($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+            <?php if (!empty($erreurs)): ?>
+                <ul class="erreurs">
+                    <?php foreach ($erreurs as $e): ?>
+                        <li><?php echo $e; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        <?php endif; ?>
+
         <form action="candidature.php" method="post">
             <label>Prénom</label>
             <input type="text" name="prenom">
