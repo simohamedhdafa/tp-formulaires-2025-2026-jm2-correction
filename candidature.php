@@ -5,6 +5,7 @@
     $age       = '';
     $filiere   = '';
     $motivation = '';
+    $reglement = '';
     $erreurs   = [];
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -20,6 +21,39 @@
         $filiere    = $_POST['filiere']    ?? '';
         $motivation = $_POST['motivation'] ?? '';
         $reglement = isset($_POST['reglement']);
+    }
+    
+    // Exemple pour le prénom
+    if (empty($prenom)) {
+        $erreurs[] = "Le prénom est obligatoire.";
+    }
+
+    // Exemple pour le nom
+    if (empty($nom)) {
+        $erreurs[] = "Le nom est obligatoire.";
+    }
+
+    // Exemple pour l'email
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreurs[] = "L'adresse email est invalide.";
+    }
+
+    // À vous d'écrire les 5 règles restantes sur le même modèle
+    // l'âge doit être un nombre compris entre 16 et 30
+    if(empty($age) || !is_numeric($age) || $age<16 || $age>30){
+        $erreurs[] = "L'âge doit être un nombre entre 16 et 30.";
+    }
+
+    if(empty($filiere)){ //  !in_array($filiere, ["informatiquie", "mathematiques", ...])
+        $erreurs[] = "Veuillez choisir une filière.";
+    }
+
+    if(strlen($motivation)<30){
+        $erreurs[] = "La motivation doit contenir au moins 30 caractères.";
+    }
+
+    if(!$reglement){
+        $erreurs[] = "Vous devez accepter le règlement.";
     }
 ?>
 <!DOCTYPE html>
