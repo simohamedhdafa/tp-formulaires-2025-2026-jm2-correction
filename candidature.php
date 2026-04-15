@@ -78,26 +78,26 @@
 
         <form action="candidature.php" method="post">
             <label>Prénom</label>
-            <input type="text" name="prenom">
+            <input type="text" name="prenom" value="<?php echo $prenom; ?>">
             <label>Nom</label>
-            <input type="text" name="nom">
+            <input type="text" name="nom" value="<?php echo $nom; ?>">
             <label>Adresse email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" value="<?php echo $email; ?>">
             <label>Âge</label>
-            <input type="number" name="age">
+            <input type="number" name="age" value="<?php echo $age; ?>">
             <label>Filière souhaitée</label>
             <select name="filiere">
                 <option value="">--Choisir--</option>
-                <option value="mathematiques">Mathématiques</option>
-                <option value="informatique">Informatique</option>
-                <option value="electronique">Electronique</option>
-                <option value="mecanique">Mécanique</option>
-                <option value="autre">Autre</option>
+                <option value="mathematiques"<?php echo ($filiere === 'mathematiques') ? 'selected' : ''; ?>>Mathématiques</option>
+                <option value="informatique" <?php echo ($filiere === 'informatique') ? 'selected' : ''; ?>>Informatique</option>
+                <option value="electronique" <?php echo ($filiere === 'electronique') ? 'selected' : ''; ?>>Electronique</option>
+                <option value="mecanique" <?php echo ($filiere === 'mecanique') ? 'selected' : ''; ?>>Mécanique</option>
+                <option value="autre" <?php echo ($filiere === 'autre') ? 'selected' : ''; ?>>Autre</option>
             </select>
             <label>Lettre de motivation</label>
-            <textarea name="motivation"></textarea>
+            <textarea name="motivation"><?php echo $motivation; ?></textarea>
             <label>J'ai lu et j'accepte le règlement du club.</label>
-            <input type="checkbox" name="reglement" value="1">
+            <input type="checkbox" name="reglement" value="1" <?php echo $reglement ? 'checked' : ''; ?>>
             <input type="submit" value="Envoyer ma candidature">
         </form>
     </div>
